@@ -7,6 +7,16 @@ public class LifeSim {
     private String firstname;
     private String lastname;
     private double salary;
+
+    /**
+     * Constructor
+     * @param money
+     * @param health
+     * @param age
+     * @param firstname
+     * @param lastname
+     * @param salary
+     */
     public LifeSim(double money, int health, int age, String firstname, String lastname, double salary) {
         this.money = money;
         this.health = health;
@@ -15,14 +25,32 @@ public class LifeSim {
         this.lastname = lastname;
         this.salary = salary;
     }
+
+    /**
+     * Ages up the player by 1 year
+     * @param age
+     * @return age
+     */
     public int ageUp(int age) {
         age++;
         return age;
     }
+
+    /**
+     * Increases the salary by a given amount
+     * @param salary
+     * @param increasedAmount
+     * @return salary
+     */
     public double setSalary(double salary, double increasedAmount) {
         salary += increasedAmount;
         return salary;
     }
+
+    /**
+     * Randomly determines if you die this year or not
+     * @return true || false
+     */
     public boolean dead() {
         Random rand = new Random();
         int randomNumber = rand.nextInt(100);

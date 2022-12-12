@@ -27,9 +27,9 @@ public class LifeSim {
         Random rand = new Random();
         int randomNumber = rand.nextInt(100);
         if (randomNumber <= 50) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
     public static void main(String args[]) {
@@ -43,6 +43,20 @@ public class LifeSim {
         double startMoney = input.nextDouble();
         System.out.println("Enter your age: ");
         int mainAge = input.nextInt();
-        LifeSim life = new LifeSim(startMoney, 10, mainAge, newFirstName, newLastName, 50000);
+        int health = 10;
+        double salary = 50000.0;
+        boolean check = false;
+        double newMoney = 0;
+        LifeSim life = new LifeSim(startMoney, health, mainAge, newFirstName, newLastName, salary);
+        while (check == false || health > 0) {
+            check = life.dead();
+            health--;
+            mainAge = life.ageUp(mainAge);
+            newMoney += salary;
+            startMoney += salary;
+            salary = life.setSalary(salary, salary * 0.05);
+            System.out.printf("Money: %f\n Age: %d\n Salary: %f\n",startMoney, mainAge, salary);
+        }
+        System.out.printf("You died at age " + mainAge + ". You earned $%.2f" + ". You have a total of $%.2f" + ".", newMoney, startMoney);
     }
 }
